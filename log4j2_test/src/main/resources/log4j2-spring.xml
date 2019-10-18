@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="5">
+    <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+
+    <!--变量配置-->
+    <Properties>
+        <!-- 格式化输出：%date表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %msg：日志消息，%n是换行符-->
+        <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
+        <!--        <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />-->
+        <!-- 定义日志存储的路径，不要配置相对路径 -->
+        <property name="FILE_PATH" value="/data/logs/log4j2_test/server/log4j"/>
+    </Properties>
+
+    <appenders>
+
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="[%-5p] %d{yyyy-MM-dd HH:mm:ss,SSS} method:%l%n%m%n"/>
+            <!--控制台只输出level及其以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </console>
+
+        <RollingFile name="DRollingFile" fileName="${FILE_PATH}/log.log"
+                     filePattern="${FILE_PATH}/log.log.%d{yyyy-MM-dd-HH-mm}_%i">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n"/>
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，默认是1(filePattern配置的最精确时间，比如此项目中配置的为分钟) -->
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <!--单个文件大小，支持KB,MB,GB-->
+                <SizeBasedTriggeringPolicy size="10 KB"/>
+            </Policies>
+            <!--保存2分钟，支持天，时，分，秒-->
+            <DefaultRolloverStrategy>
+                <Delete basePath="${FILE_PATH}" maxDepth="1">
+                    <IfFileName glob="log.log.*"/>
+                    <IfLastModified age="2m"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </appenders>
+
+    <!--Logger节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等。-->
+    <!--然后定义loggers，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="org.mybatis" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <!--监控系统信息-->
+        <!--若是additivity设为false，则 子Logger 只会在自己的appender里输出，而不会在 父Logger 的appender里输出。-->
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="DRollingFile"/>
+            <appender-ref ref="ERollingFile"/>
+        </root>
+    </loggers>
+
+</configuration>
