@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    dynamic:
+      primary: duser
+      datasource:
+        duser:
+          username: root
+          password: root
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/duser?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        dproduct:
+          username: root
+          password: root
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/dproduct?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      druid:
+        initial-size: 5
+        min-idle: 5
+        max-active: 50
+        max-wait: 10000
+    druid:
+      stat-view-servlet:
+        loginUsername: admin
+        loginPassword: 123456
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+
+mybatis-plus:
+  mapper-locations: classpath:mapperxml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

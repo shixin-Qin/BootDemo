@@ -1,10 +1,16 @@
 package com.example.mybatisplus_demo.po;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 @Data
 public class AppGame {
+
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
     private Integer appId;
@@ -21,7 +27,7 @@ public class AppGame {
     */
     private Byte status;
 
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    private Date lastUpdateTime;
+    private LocalDateTime lastUpdateTime;
 }
