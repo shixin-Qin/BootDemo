@@ -10,4 +10,8 @@ class JavaTestApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void name() {
+
+    }
 }
