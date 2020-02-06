@@ -13,7 +13,5 @@ class JavaTestApplicationTests {
     @Test
     void name() {
 
-
-
     }
 }
