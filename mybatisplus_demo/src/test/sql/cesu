@@ -1,0 +1,5 @@
+插入10w条
+
+simple()          65s
+simple(加上事务)  19s
+batch             8s
