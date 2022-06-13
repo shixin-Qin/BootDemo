@@ -10,6 +10,4 @@ class ProTestApplicationTests {
     void contextLoads() {
     }
 
-
-
 }

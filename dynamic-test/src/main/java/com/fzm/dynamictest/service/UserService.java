@@ -6,6 +6,5 @@ import com.fzm.dynamictest.po.User;
 
 public interface UserService extends IService<User> {
 
-
     void addOne(User user);
 }

@@ -12,6 +12,7 @@ public class NewsCode {
      * 编号.
      */
     private String id;
+
     // 类型
     private byte type;
 
@@ -22,7 +23,6 @@ public class NewsCode {
     private String name;
 
     private byte status;
-
 
     public byte getType() {
         return type;
@@ -56,7 +56,6 @@ public class NewsCode {
         this.status = status;
     }
 
-
     public String getId() {
         return id;
     }
@@ -67,12 +66,7 @@ public class NewsCode {
 
     @Override
     public String toString() {
-        return "NewsCode{" +
-                "id='" + id + '\'' +
-                ", type=" + type +
-                ", code=" + code +
-                ", name='" + name + '\'' +
-                ", status=" + status +
-                '}';
+        return "NewsCode{" + "id='" + id + '\'' + ", type=" + type + ", code=" + code + ", name='" + name + '\''
+                + ", status=" + status + '}';
     }
 }

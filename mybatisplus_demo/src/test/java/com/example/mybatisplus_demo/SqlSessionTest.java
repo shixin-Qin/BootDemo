@@ -127,7 +127,6 @@ public class SqlSessionTest extends MybatisplusDemoApplicationTests {
         System.out.println("插入耗时:" + (end - start) / 1000);
     }
     
-    
     @Test
     public void selectAllTest() {
         long start = System.currentTimeMillis();
@@ -146,12 +145,12 @@ public class SqlSessionTest extends MybatisplusDemoApplicationTests {
         ArrayList<AppGame> list = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             AppGame appGame = new AppGame();
-            appGame.setId(i+1);
+            appGame.setId(i + 1);
             appGame.setName("ddd");
             appGameService.updateById(appGame);
         }
         long end = System.currentTimeMillis();
-    
+
         System.out.println("耗时:" + (end - start) / 1000);
     }
     
@@ -161,7 +160,7 @@ public class SqlSessionTest extends MybatisplusDemoApplicationTests {
         ArrayList<AppGame> list = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             AppGame appGame = new AppGame();
-            appGame.setId(i+1);
+            appGame.setId(i + 1);
             appGame.setName("eee");
             list.add(appGame);
         }
@@ -170,7 +169,7 @@ public class SqlSessionTest extends MybatisplusDemoApplicationTests {
             ArrayList<Integer> idList = new ArrayList<>();
             gameList.stream().forEach(one -> idList.add(one.getId()));
             UpdateWrapper<AppGame> updateWrapper = new UpdateWrapper<>();
-            updateWrapper.in("id",idList);
+            updateWrapper.in("id", idList);
             updateWrapper.setSql("status = status + 1");
             appGameService.update(updateWrapper);
         }

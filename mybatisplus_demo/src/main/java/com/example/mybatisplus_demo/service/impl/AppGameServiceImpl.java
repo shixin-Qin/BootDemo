@@ -13,8 +13,9 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @Data
-public class  AppGameServiceImpl extends ServiceImpl<AppGameMapper,AppGame> implements AppGameService{
+public class AppGameServiceImpl extends ServiceImpl<AppGameMapper, AppGame> implements AppGameService {
     
-    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(8,16,2, TimeUnit.SECONDS,new LinkedBlockingQueue<>(10000));
+    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(8, 16, 2, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(10000));
     
 }

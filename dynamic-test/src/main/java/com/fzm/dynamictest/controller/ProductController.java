@@ -14,23 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/product")
 @DS("dproduct")
 public class ProductController {
+
     @Autowired
     ProductService productService;
+
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public boolean add(Product product){
-       return productService.save(product);
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public boolean add(Product product) {
+        return productService.save(product);
     }
 
-    @RequestMapping(value = "/modify",method = RequestMethod.POST)
-    public boolean modify(Product product){
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public boolean modify(Product product) {
         return productService.updateById(product);
     }
 
-    @RequestMapping(value = "/add_user",method = RequestMethod.POST)
-    public void addUser(User user){
+    @RequestMapping(value = "/add_user", method = RequestMethod.POST)
+    public void addUser(User user) {
         Product product = new Product();
         product.setName("芝士");
         productService.save(product);

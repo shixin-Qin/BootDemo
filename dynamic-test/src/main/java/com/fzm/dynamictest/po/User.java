@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class User {
+
     /**
      * 自增id
      */

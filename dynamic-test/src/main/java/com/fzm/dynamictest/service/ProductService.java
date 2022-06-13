@@ -5,5 +5,4 @@ import com.fzm.dynamictest.po.Product;
 
 public interface ProductService extends IService<Product> {
 
-
 }

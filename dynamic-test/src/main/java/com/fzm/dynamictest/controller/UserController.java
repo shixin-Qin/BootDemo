@@ -16,12 +16,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/test")
-    public String test(){
+    public String test() {
         return "哈哈";
     }
 
     @RequestMapping("/list")
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userService.list();
     }
 

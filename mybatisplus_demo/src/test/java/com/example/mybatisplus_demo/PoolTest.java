@@ -42,7 +42,7 @@ public class PoolTest extends MybatisplusDemoApplicationTests {
     
        /* System.out.println("生成对象耗时:" + (endfor - start) / 1000);
         System.out.println("插入耗时:" + (end - endfor) / 1000);*/
-        System.out.println("耗时：" + (end - start) );
+        System.out.println("耗时：" + (end - start));
     }
     
     @Test
@@ -60,7 +60,7 @@ public class PoolTest extends MybatisplusDemoApplicationTests {
     
        /* System.out.println("生成对象耗时:" + (endfor - start) / 1000);
         System.out.println("插入耗时:" + (end - endfor) / 1000);*/
-        System.out.println("耗时：" + (end - start) );
+        System.out.println("耗时：" + (end - start));
     }
     
     @Test
@@ -73,7 +73,8 @@ public class PoolTest extends MybatisplusDemoApplicationTests {
             list.add(appGame);
         }
         List<List<AppGame>> listList = ListUtil.partition(list, 1000);
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(6,16,0, TimeUnit.SECONDS,new LinkedBlockingQueue<>(10000));
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(6, 16, 0, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(10000));
         for (List<AppGame> gameList : listList) {
             BatchInsertRunnable runnable = new BatchInsertRunnable(appGameService, gameList);
             threadPoolExecutor.execute(runnable);

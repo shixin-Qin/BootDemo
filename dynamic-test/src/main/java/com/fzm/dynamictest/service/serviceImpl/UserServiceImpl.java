@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @DS("duser")
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService{
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
     public void addOne(User user) {
