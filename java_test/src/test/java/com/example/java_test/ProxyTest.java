@@ -20,7 +20,7 @@ public class ProxyTest {
 
     @Test
     void name2() {
-        UserService userService = (UserService)new ProxyFactory(new UserServiceImpl()).getProxyInstance();
+        UserService userService = (UserService) new ProxyFactory(new UserServiceImpl()).getProxyInstance();
         userService.saveUser();
     }
 

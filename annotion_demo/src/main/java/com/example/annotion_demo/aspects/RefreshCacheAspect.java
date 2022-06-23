@@ -21,15 +21,15 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class RefreshCacheAspect {
-    
+
     @AfterReturning("@annotation(com.example.annotion_demo.annotions.HandleType)")
     public void refresh(JoinPoint pjp) throws Exception {
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
         System.out.println(method.getName() + "() 返回后切面处理。");
-        
+
         // 获取方法上指定注解
         HandleType handleTypeAnnotion = method.getAnnotation(HandleType.class);
-        
+
         String handle = handleTypeAnnotion.handle();
         /**
          * 模拟更新数据后刷新缓存

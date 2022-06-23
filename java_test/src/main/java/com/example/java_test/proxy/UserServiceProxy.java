@@ -1,6 +1,6 @@
 package com.example.java_test.proxy;
 
-public class UserServiceProxy implements UserService{
+public class UserServiceProxy implements UserService {
 
     private UserService target;
 

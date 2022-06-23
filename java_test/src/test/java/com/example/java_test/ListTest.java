@@ -16,7 +16,7 @@ import java.util.List;
  */
 @SpringBootTest
 public class ListTest {
-    
+
     @Test
     public void name1() {
         int[] arrs = new int[3];
@@ -24,16 +24,16 @@ public class ListTest {
         arrs[1] = 5;
         System.out.println(arrs.length);
         arrs[2] = 6;
-    
+
         List<String> arrayList = new ArrayList<>();
         arrayList.add("ee");
         arrayList.add("ee");
         arrayList.add("ee");
         System.out.println(arrayList);
-        arrayList.add(1,"999");
+        arrayList.add(1, "999");
         System.out.println(arrayList);
     }
-    
+
     @Test
     void name2() {
         List<String> arrayList = new ArrayList<>();
@@ -42,14 +42,14 @@ public class ListTest {
         arrayList.add("ez");
         System.out.println(arrayList);
         for (int i = 0; i < arrayList.size(); i++) {
-            if(i == 1){
+            if (i == 1) {
                 arrayList.remove(i);
             }
-            System.out.println("i:"+i + "...:" + arrayList.get(i));
+            System.out.println("i:" + i + "...:" + arrayList.get(i));
         }
         System.out.println(arrayList);
     }
-    
+
     @Test
     void name3() {
         ArrayList<String> list = new ArrayList<>(11);
@@ -68,7 +68,7 @@ public class ListTest {
         System.out.println(list);
         System.out.println(list.size());
     }
-    
+
     @Test
     void name4() {
         HashMap<Object, Object> objectObjectHashMap = new HashMap<>();

@@ -1,6 +1,7 @@
 package com.example.java_test;
 
 import com.example.co.T;
+import com.example.java_test.po.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,22 +11,22 @@ import java.util.concurrent.FutureTask;
 
 @SpringBootTest
 class JavaTestApplicationTests {
-    
+
     @Test
     void contextLoads() {
     }
-    
+
     @Test
     void name() {
-    
+
     }
-    
+
     @Test
     void name2() {
         T t = new T(4);
         System.out.println("创建完 i:" + t.getI());
     }
-    
+
     @Test
     void name3() {
         int i = Integer.MAX_VALUE;
@@ -33,7 +34,7 @@ class JavaTestApplicationTests {
         int k = i + j;
         System.out.println(k);
     }
-    
+
     @Test
     void name4() {
         int i = Runtime.getRuntime().availableProcessors();
@@ -54,5 +55,20 @@ class JavaTestApplicationTests {
         new Thread(futureTask).start();
         Integer integer = futureTask.get();
         System.out.println(integer);
+    }
+
+    @Test
+    void name6() {
+        Person person = new Person("张三", 20);
+        Person person1 = person;
+        System.out.println("修改前.........");
+        System.out.println(person);
+        System.out.println(person1);
+
+        person1.setAge(30);
+        System.out.println("修改后.........");
+        System.out.println(person);
+        System.out.println(person1);
+
     }
 }

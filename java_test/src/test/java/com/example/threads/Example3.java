@@ -25,36 +25,36 @@ import java.util.HashMap;
  * 后线程都将检查共享变量然后再停止。下面示例描述了该技术。
  * */
 class Example3 extends Thread {
-    
+
     volatile boolean stop = false;
-    
+
     public static void main(String args[]) throws Exception {
         Example3 thread = new Example3();
-        
+
         System.out.println("Starting thread...");
         thread.start();
-        
+
         Thread.sleep(3000);
-        
+
         System.out.println("Asking thread to stop...");
-        
+
         /*
          * 如果线程阻塞，将不会检查此变量,调用interrupt之后，线程就可以尽早的终结被阻
          * 塞状 态，能够检查这一变量。
          * */
         //        thread.stop = true;
-        
+
         /*
          * 这一方法实际上完成的是，在线程受到阻塞时抛出一个中断信号，这样线程就得以退
          * 出阻 塞的状态
          * */
         thread.interrupt();
-        
+
         Thread.sleep(3000);
         System.out.println("Stopping application...");
         System.exit(0);
     }
-    
+
     public void run() {
         while (!stop) {
             System.out.println("Thread running...");
@@ -65,7 +65,7 @@ class Example3 extends Thread {
                 System.out.println("Thread interrupted...");
             }
         }
-        
+
         System.out.println("Thread exiting under request...");
     }
 }

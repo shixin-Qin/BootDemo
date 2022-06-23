@@ -2,18 +2,17 @@ package com.example.threads;
 
 import org.springframework.stereotype.Component;
 
-public class Thread3 extends Thread{
-    public void run(){
-        while(true){
-            if(Thread.currentThread().isInterrupted()){
+public class Thread3 extends Thread {
+    public void run() {
+        while (true) {
+            if (Thread.currentThread().isInterrupted()) {
                 System.out.println("Someone interrupted me.");
-            }
-            else{
+            } else {
                 System.out.println("Thread is Going...");
             }
         }
     }
-    
+
     public static void main(String[] args) throws InterruptedException {
         Thread3 t = new Thread3();
         t.start();

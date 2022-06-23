@@ -12,7 +12,7 @@ public class ProxyFactory {
         this.target = target;
     }
 
-    public Object getProxyInstance(){
+    public Object getProxyInstance() {
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

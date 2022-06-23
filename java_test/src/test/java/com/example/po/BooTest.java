@@ -8,7 +8,7 @@ package com.example.po;
  * @createTime 2022/2/14 16
  */
 public class BooTest {
-    
+
     public static void main(String[] args) {
         Integer falg = 0;
         change(falg);
@@ -17,9 +17,9 @@ public class BooTest {
             System.out.println(falg);
         }
     }
-    
+
     private static void change(Integer falg) {
         falg = 1;
     }
-    
+
 }
