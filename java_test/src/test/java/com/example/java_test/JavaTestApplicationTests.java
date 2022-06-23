@@ -4,6 +4,10 @@ import com.example.co.T;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 @SpringBootTest
 class JavaTestApplicationTests {
     
@@ -34,5 +38,21 @@ class JavaTestApplicationTests {
     void name4() {
         int i = Runtime.getRuntime().availableProcessors();
         System.out.println(i);
+    }
+
+
+    @Test
+    void name5() throws ExecutionException, InterruptedException {
+        FutureTask<Integer> futureTask = new FutureTask<>(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                System.out.println("执行方法");
+                Thread.sleep(5000);
+                return 99999999;
+            }
+        });
+        new Thread(futureTask).start();
+        Integer integer = futureTask.get();
+        System.out.println(integer);
     }
 }

@@ -2,6 +2,8 @@ package com.fzm.pro_test;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 /**
  * 字典表
  */
@@ -68,5 +70,18 @@ public class NewsCode {
     public String toString() {
         return "NewsCode{" + "id='" + id + '\'' + ", type=" + type + ", code=" + code + ", name='" + name + '\''
                 + ", status=" + status + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NewsCode newsCode = (NewsCode) o;
+        return type == newsCode.type && status == newsCode.status && Objects.equals(id, newsCode.id) && Objects.equals(code, newsCode.code) && Objects.equals(name, newsCode.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, code, name, status);
     }
 }

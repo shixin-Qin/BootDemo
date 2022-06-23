@@ -74,4 +74,9 @@ public class ListTest {
         HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
         System.out.println(objectObjectHashMap.size());
     }
+
+    @Test
+    void name5() {
+        int i = 5;
+    }
 }
