@@ -71,4 +71,26 @@ class JavaTestApplicationTests {
         System.out.println(person1);
 
     }
+
+
+    @Test
+    void name7() {
+        byte b = 127;
+        b++;
+        System.out.println(b);
+    }
+
+    @Test
+    void name8() {
+        int i = 9999999;
+        byte b= (byte) i;
+        System.out.println(b);
+    }
+
+    @Test
+    void name9() {
+        int i = Integer.MAX_VALUE;
+        System.out.println(i++);
+        System.out.println(i);
+    }
 }
