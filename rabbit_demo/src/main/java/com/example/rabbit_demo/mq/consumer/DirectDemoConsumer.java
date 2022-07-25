@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Slf4j
-@Component
-//使用queuesToDeclare属性，如果不存在则会创建队列
-@RabbitListener(queuesToDeclare = @Queue(RabbitMQConfig.RABBITMQ_DEMO_TOPIC))
+//@Component
+////使用queuesToDeclare属性，如果不存在则会创建队列
+//@RabbitListener(queuesToDeclare = @Queue(RabbitMQConfig.RABBITMQ_DEMO_TOPIC),concurrency = "10")
 public class DirectDemoConsumer {
 
     @RabbitHandler
     public void handle(@Payload Map map) {
-        log.info("direct:消费消息:{}", map.toString());
+        log.info("direct:消费消息1:{}", map.toString());
     }
 }
